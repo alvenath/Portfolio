@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maxiemillian // Web Developer & Information Systems Student</title>
+  <meta name="description"
+    content="Portfolio of Maxiemillian (alvenath). College student majoring in Information Systems in Indonesia, specializing in Web Development with PHP, MySQL, and Laravel." />
+
+  <!-- Google Fonts: Editorial Serif/Display & Monospace -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dark-theme">
+  <!-- Minimalist Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+
+  <!-- Background Ambient Mesh -->
+  <canvas id="ambientCanvas"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Audio Toggle (Subtle Haptic Feedback) -->
+  <button id="soundToggle" class="sound-pill" title="Toggle audio feedback" aria-label="Toggle UI Audio">
+    <i class="fa-solid fa-volume-xmark"></i>
+    <span id="soundToggleText" data-i18n="sound_off">Sound: OFF</span>
+  </button>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Homepage">
+        <span class="logo-mark">M</span>
+        <span class="logo-sub">.ARCH</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link"><span class="nav-num">01.</span> <span data-i18n="nav_about">Philosophy</span></a>
+        <a href="#topologyContainer" class="nav-link" id="navNodeGraph"><span class="nav-num">02.</span> <span data-i18n="nav_graph">Node Graph</span></a>
+        <a href="#skills" class="nav-link"><span class="nav-num">03.</span> <span data-i18n="nav_stack">Stack</span></a>
+        <a href="#projects" class="nav-link"><span class="nav-num">04.</span> <span data-i18n="nav_works">Works</span></a>
+        <a href="#experience" class="nav-link"><span class="nav-num">05.</span> <span data-i18n="nav_journey">Journey</span></a>
+        <a href="#terminal-section" class="nav-link"><span class="nav-num">06.</span> <span data-i18n="nav_cli">CLI</span></a>
+        <a href="#contact" class="nav-link contact-btn" data-i18n="nav_contact">Initiate Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="langToggle" class="lang-toggle-btn" aria-label="Switch Language (English / Bahasa Indonesia)" title="Switch Language / Ganti Bahasa">
+          <i class="fa-solid fa-language"></i>
+          <span class="lang-segment active" id="langEn">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-segment" id="langId">ID</span>
+        </button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="menuToggle" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION: Ultra-Minimalist Editorial & Interactive 3D System Topology -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="pulse-dot"></span>
+            <span class="badge-text" data-i18n="hero_badge">Open to Web Projects & Collaboration</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="title-sub" data-i18n="hero_role_title">Web Developer & Student</span>
+            <span class="title-main text-gradient">Maxiemillian</span>
+          </h1>
+
+          <div class="hero-role-wrapper">
+            <span class="role-static" data-i18n="hero_building">Building</span>
+            <span class="dynamic-typewriter" id="typewriter"></span>
+            <span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-bio" data-i18n="hero_bio">
+            College student majoring in Information Systems in Indonesia, passionate about web development. Building
+            functional, data-driven applications with PHP backends and clean, modern user interfaces.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span data-i18n="hero_cta_projects">Explore Selected Work</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+            <a href="#terminal-section" class="btn btn-outline">
+              <i class="fa-solid fa-terminal"></i>
+              <span data-i18n="hero_cta_cli">Launch Terminal CLI</span>
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <span data-i18n="hero_cta_contact">Direct Contact</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div><span class="stat-number" data-count="6">0</span><span class="stat-plus">+</span></div>
+              <span class="stat-label" data-i18n="stat_repos">Repositories</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div><span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span></div>
+              <span class="stat-label" data-i18n="stat_stack">Tech Stack Areas</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div><span class="stat-number" data-count="100">0</span><span class="stat-plus">%</span></div>
+              <span class="stat-label" data-i18n="stat_passion">Passion for Code</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D INTERACTIVE SYSTEM TOPOLOGY CANVAS -->
+        <div class="hero-visual">
+          <div id="architecture" style="position: absolute; top: -120px; left: 0;"></div>
+          <div class="topology-card glassmorphism-card" id="topologyContainer">
+            <div class="topology-header">
+              <div class="topology-status">
+                <span class="node-live-pulse"></span>
+                <span data-i18n="topo_title">SKILL GRAPH // WEB DEV STACK</span>
+              </div>
+              <span class="topology-hint" data-i18n="topo_hint">Click & Drag Nodes - Orbit Physics</span>
+            </div>
+
+            <!-- Live 3D/Isometric Interactive Canvas -->
+            <div class="canvas-viewport">
+              <canvas id="topologyCanvas"></canvas>
+            </div>
+
+            <div class="topology-footer">
+              <div class="cluster-metric">
+                <span class="metric-lbl" data-i18n="topo_core">Core Skills</span>
+                <span class="metric-val" id="activeNodesCount" data-i18n="topo_domains">5 Domains</span>
+              </div>
+              <div class="cluster-metric">
+                <span class="metric-lbl" data-i18n="topo_focus_lbl">Focus</span>
+                <span class="metric-val text-amber" data-i18n="topo_focus_val">Web Dev</span>
+              </div>
+              <div class="cluster-metric">
+                <span class="metric-lbl" data-i18n="topo_status_lbl">Status</span>
+                <span class="metric-val text-sand" data-i18n="topo_status_val">Student</span>
+              </div>
+              <button class="pulse-burst-btn" id="burstPacketsBtn" title="Send test packet wave">
+                <i class="fa-solid fa-bolt"></i> <span data-i18n="topo_btn">Skill Pulse</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to content">
+        <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+        <span class="scroll-text" data-i18n="scroll_down">Scroll Down</span>
+      </a>
+    </section>
+
+    <!-- SECTION 01: PHILOSOPHY & CRAFT -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle" data-i18n="about_subtitle">01 // About Me</span>
+          <h2 class="section-title" data-i18n="about_title">Code with purpose. Build with clarity.</h2>
+          <p class="section-desc" data-i18n="about_desc">A passionate web developer and student from Indonesia, building functional,
+            data-driven web applications.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-story reveal">
+            <p class="lead-text" data-i18n="about_lead">
+              I'm Maxiemillian Davin Airell a college student from Indonesia majoring in Information Systems, with a
+              passion for
+              web development and building things that actually work.
+            </p>
+            <p data-i18n="about_body">
+              I specialize in integrating backend systems (PHP, MySQL) with modern, clean frontend interfaces. Currently
+              expanding my skills into full-stack development with Laravel, while exploring the intersection of clean
+              code and great design.
+            </p>
+
+            <div class="core-values">
+              <div class="value-card">
+                <div class="value-icon"><i class="fa-solid fa-code"></i></div>
+                <div>
+                  <h4 data-i18n="val1_title">Full-Stack Web Development</h4>
+                  <p data-i18n="val1_desc">Building functional, data-driven apps with PHP backends and clean CSS frontends.</p>
+                </div>
+              </div>
+              <div class="value-card">
+                <div class="value-icon"><i class="fa-solid fa-database"></i></div>
+                <div>
+                  <h4 data-i18n="val2_title">Database-Driven Applications</h4>
+                  <p data-i18n="val2_desc">Designing and querying MySQL databases to power robust web applications.</p>
+                </div>
+              </div>
+              <div class="value-card">
+                <div class="value-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div>
+                  <h4 data-i18n="val3_title">Always Learning</h4>
+                  <p data-i18n="val3_desc">Currently mastering Laravel and exploring modern web frameworks to level up my craft.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-interactive reveal">
+            <div class="spec-matrix-card glassmorphism-card">
+              <div class="matrix-header">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span data-i18n="matrix_title">DEVELOPER PROFILE</span>
+              </div>
+              <div class="matrix-list">
+                <div class="matrix-row">
+                  <span class="m-key" data-i18n="m_focus_key">Primary Focus</span>
+                  <span class="m-val" data-i18n="m_focus_val">Web Development & Information Systems</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="m-key" data-i18n="m_stack_key">Core Stack</span>
+                  <span class="m-val highlight">PHP, MySQL, HTML5, CSS3, JavaScript</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="m-key" data-i18n="m_avail_key">Availability</span>
+                  <span class="m-val" data-i18n="m_avail_val">Open for beginner-friendly projects & collaboration</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="m-key" data-i18n="m_loc_key">Location</span>
+                  <span class="m-val" data-i18n="m_loc_val">Indonesia</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="m-key" data-i18n="m_learn_key">Currently Learning</span>
+                  <span class="m-val" data-i18n="m_learn_val">Laravel Framework</span>
+                </div>
+              </div>
+
+              <div class="code-quote-box">
+                <div class="quote-text" id="philosophyQuote">
+                  "Simplicity is prerequisite for reliability."
+                </div>
+                <div class="quote-author">— Edsger W. Dijkstra</div>
+                <button class="quote-shuffle-btn" id="nextQuoteBtn" title="Next engineering maxim">
+                  <i class="fa-solid fa-arrow-rotate-right"></i> <span data-i18n="next_maxim">Next Maxim</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: SKILLS & TECHNICAL PROFICIENCIES -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle" data-i18n="skills_subtitle">02 // Stack & Tooling</span>
+          <h2 class="section-title" data-i18n="skills_title">Technologies I Work With</h2>
+          <p class="section-desc" data-i18n="skills_desc">Tools and languages I use regularly for coursework, personal projects, and data-driven
+            web applications.</p>
+        </div>
+
+        <div class="skills-filter reveal">
+          <button class="filter-tab active" data-filter="all" data-i18n="filter_all">All Stack</button>
+          <button class="filter-tab" data-filter="backend" data-i18n="filter_backend">Systems & Backend</button>
+          <button class="filter-tab" data-filter="frontend" data-i18n="filter_frontend">Frontend & Graphics</button>
+          <button class="filter-tab" data-filter="cloud" data-i18n="filter_cloud">Cloud & Orchestration</button>
+          <button class="filter-tab" data-filter="data" data-i18n="filter_data">Storage & Streaming</button>
+        </div>
+
+        <div class="skills-grid" id="skillsGrid">
+          <div class="skill-card" data-category="backend">
+            <div class="skill-icon-wrap"><i class="fa-brands fa-php"></i></div>
+            <div class="skill-info">
+              <div class="skill-head">
+                <h3>PHP</h3>
+                <span class="skill-level">82%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 82%"></div>
+              </div>
+              <p class="skill-desc" data-i18n="skill_php_desc">Server-side scripting, form handling, session management, and backend logic for web
+                apps</p>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="backend">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-fire"></i></div>
+            <div class="skill-info">
+              <div class="skill-head">
+                <h3>Laravel</h3>
+                <span class="skill-level">55%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 55%"></div>
+              </div>
+              <p class="skill-desc" data-i18n="skill_laravel_desc">Currently mastering Laravel — MVC architecture, Eloquent ORM, and Blade templating
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-icon-wrap"><i class="fa-brands fa-html5"></i></div>
+            <div class="skill-info">
+              <div class="skill-head">
+                <h3>HTML5 & CSS3</h3>
+                <span class="skill-level">88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 88%"></div>
+              </div>
+              <p class="skill-desc" data-i18n="skill_html_desc">Semantic markup, responsive layouts, clean CSS design, and modern UI patterns</p>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-icon-wrap"><i class="fa-brands fa-js"></i></div>
+            <div class="skill-info">
+              <div class="skill-head">
+                <h3>JavaScript</h3>
+                <span class="skill-level">72%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 72%"></div>
+              </div>
+              <p class="skill-desc" data-i18n="skill_js_desc">DOM manipulation, event handling, fetch API, and interactive user interface
+                components</p>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="data">
+            <div class="skill-icon-wrap"><i class="fa-solid fa-database"></i></div>
+            <div class="skill-info">
+              <div class="skill-head">
+                <h3>MySQL</h3>
+                <span class="skill-level">80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%"></div>
+              </div>
+              <p class="skill-desc" data-i18n="skill_mysql_desc">Relational database design, SQL queries, joins, and data management for web
+                applications</p>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="cloud">
+            <div class="skill-icon-wrap"><i class="fa-brands fa-github"></i></div>
+            <div class="skill-info">
+              <div class="skill-head">
+                <h3>GitHub & GitHub Actions</h3>
+                <span class="skill-level">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%"></div>
+              </div>
+              <p class="skill-desc" data-i18n="skill_git_desc">Version control, repository management, and basic CI/CD automation with GitHub
+                Actions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: FEATURED PROJECTS WITH ARCHITECTURE DEEP DIVES -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle" data-i18n="projects_subtitle">03 // Projects</span>
+          <h2 class="section-title" data-i18n="projects_title">What I've Been Building</h2>
+          <p class="section-desc" data-i18n="projects_desc">Personal and coursework projects showcasing my passion for web development, clean
+            design, and data-driven applications.</p>
+        </div>
+
+        <div class="projects-container">
+          <!-- Project 1: Dapur Ina Aina -->
+          <article class="project-card reveal" data-project-id="1">
+            <div class="project-content">
+              <div class="project-tag-pill" data-i18n="p1_tag">Restaurant POS &amp; Order System</div>
+              <h3 class="project-title">Dapur Ina Aina</h3>
+              <p class="project-summary" data-i18n="p1_summary">
+                A complete food ordering, inventory, and payment processing system engineered for "Dapur Ina Aina".
+                Built with PHP (PDO) and MySQL/MariaDB to manage dining orders, track ingredient stock levels, and
+                generate invoices with cash and cashless payment options.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> <span data-i18n="p1_hl1">Modular PHP with PDO security &amp; normalized MariaDB/MySQL database</span></span>
+                <span><i class="fa-solid fa-check"></i> <span data-i18n="p1_hl2">Multi-channel billing (Cash / QRIS), receipts, and live inventory tracking</span></span>
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">PHP (PDO)</span>
+                <span class="stack-tag">MySQL</span>
+                <span class="stack-tag">MariaDB</span>
+                <span class="stack-tag">HTML5</span>
+                <span class="stack-tag">CSS3</span>
+                <span class="stack-tag">JavaScript</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project-id="1">
+                  <span data-i18n="btn_details">Project Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <a href="https://github.com/alvenath/Dapur-Ina-Aina" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-brands fa-github"></i> <span data-i18n="btn_repo">Repository</span>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-preview-box">
+                <div class="mockup-code-window">
+                  <div class="mockup-header">
+                    <span class="m-dot"></span><span class="m-dot"></span><span class="m-dot"></span>
+                    <span class="m-title">dapur-ina-aina // billing.php</span>
+                  </div>
+                  <div class="mockup-body">
+                    <p class="term-line success">PDO connected: db_dapur_ina_aina</p>
+                    <p class="term-line info">[PESANAN] Meja 04: Paket Ayam Bakar &amp; Es Teh</p>
+                    <p class="term-line accent">&gt; INSERT INTO pembayaran (metode, total) VALUES ('QRIS', 85000)</p>
+                    <div class="live-graph-sim">
+                      <div class="graph-bar" style="height: 65%"></div>
+                      <div class="graph-bar" style="height: 85%"></div>
+                      <div class="graph-bar" style="height: 75%"></div>
+                      <div class="graph-bar" style="height: 95%"></div>
+                      <div class="graph-bar" style="height: 80%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reverse reveal" data-project-id="2">
+            <div class="project-content">
+              <div class="project-tag-pill" data-i18n="p2_tag">Portfolio & Personal Project</div>
+              <h3 class="project-title" data-i18n="p2_title">This Portfolio // Interactive Developer Showcase</h3>
+              <p class="project-summary" data-i18n="p2_summary">
+                A personal portfolio website built with pure HTML, CSS, and Vanilla JavaScript. Features animated canvas
+                backgrounds, interactive 3D skill graph, developer terminal CLI, and smooth scroll animations.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> <span data-i18n="p2_hl1">Interactive 3D topology canvas with physics</span></span>
+                <span><i class="fa-solid fa-check"></i> <span data-i18n="p2_hl2">CLI terminal with real commands</span></span>
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">HTML5</span>
+                <span class="stack-tag">CSS3</span>
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">Canvas API</span>
+                <span class="stack-tag">FontAwesome</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project-id="2">
+                  <span data-i18n="btn_details">Project Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <a href="https://github.com/alvenath" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-brands fa-github"></i> <span data-i18n="btn_repo">Repository</span>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-preview-box visual-art">
+                <div class="art-circle-wrapper">
+                  <div class="art-ring ring-1"></div>
+                  <div class="art-ring ring-2"></div>
+                  <div class="art-ring ring-3"></div>
+                  <div class="art-core"><i class="fa-solid fa-code"></i></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: K-List -->
+          <article class="project-card reveal" data-project-id="3">
+            <div class="project-content">
+              <div class="project-tag-pill" data-i18n="p3_tag">Full-Stack Web Platform // Entertainment</div>
+              <h3 class="project-title" data-i18n="p3_title">K-List // K-Drama Rating &amp; Bucketlist</h3>
+              <p class="project-summary" data-i18n="p3_summary">
+                A modern full-stack web application designed for listing, tracking, and rating Korean dramas. Built with
+                a responsive modern UI and integrated with Supabase for user authentication, cloud PostgreSQL database,
+                and media storage, with instant continuous deployment on Vercel.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> <span data-i18n="p3_hl1">Supabase backend integration (Auth, Postgres DB &amp; Storage)</span></span>
+                <span><i class="fa-solid fa-check"></i> <span data-i18n="p3_hl2">Interactive community ratings, reviews &amp; custom watchlists</span></span>
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">Supabase</span>
+                <span class="stack-tag">HTML5</span>
+                <span class="stack-tag">CSS3</span>
+                <span class="stack-tag">Vercel</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project-id="3">
+                  <span data-i18n="btn_details">Project Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <a href="https://github.com/alvenath/K-List" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-brands fa-github"></i> <span data-i18n="btn_repo">Repository</span>
+                </a>
+                <a href="https://k-list-ashen.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="btn_demo">Live Demo</span>
+                </a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="project-preview-box">
+                <div class="mockup-code-window">
+                  <div class="mockup-header">
+                    <span class="m-dot"></span><span class="m-dot"></span><span class="m-dot"></span>
+                    <span class="m-title">k-list // supabase.js</span>
+                  </div>
+                  <div class="mockup-body">
+                    <p class="term-line success">supabase.auth.getUser() &rarr; 200 OK</p>
+                    <p class="term-line info">[WATCHLIST] 14 titles synced (Plan to Watch / Completed)</p>
+                    <p class="term-line accent">&gt; submitRating(dramaId=102, stars=9.8) &rarr; Updated</p>
+                    <div class="metric-hud">
+                      <div class="hud-box">
+                        <span class="hud-label">Dramas</span>
+                        <span class="hud-val">Catalog Live</span>
+                      </div>
+                      <div class="hud-box">
+                        <span class="hud-label">Backend</span>
+                        <span class="hud-val">Supabase</span>
+                      </div>
+                    </div>
+                    <div class="pulse-wave-wrapper">
+                      <div class="pulse-line"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: EDUCATION & JOURNEY -->
+    <section id="experience" class="section experience-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle" data-i18n="exp_subtitle">04 // Education & Journey</span>
+          <h2 class="section-title" data-i18n="exp_title">My Learning Path</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+            </div>
+            <div class="timeline-card glassmorphism-card">
+              <div class="timeline-header">
+                <span class="time-period" data-i18n="exp1_period">2022 - Present</span>
+                <span class="company-badge" data-i18n="exp1_inst">University Gunadarma</span>
+              </div>
+              <h3 class="role-title" data-i18n="exp1_role">Bachelor's Degree - Information Systems</h3>
+              <p class="role-desc" data-i18n="exp1_desc">
+                Currently pursuing my degree in Information Systems in Indonesia, with a specialization in Web
+                Development. Learning backend systems, database management, and integrating server-side logic with
+                modern user interfaces.
+              </p>
+              <div class="tech-chips">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+            </div>
+            <div class="timeline-card glassmorphism-card">
+              <div class="timeline-header">
+                <span class="time-period" data-i18n="exp2_period">2023 - Present</span>
+                <span class="company-badge" data-i18n="exp2_inst">Self-Learning</span>
+              </div>
+              <h3 class="role-title" data-i18n="exp2_role">Full-Stack Web Development</h3>
+              <p class="role-desc" data-i18n="exp2_desc">
+                Expanding portfolio with full-stack projects using PHP for backend logic, clean CSS design for the
+                frontend, and now exploring Laravel as a modern framework to build more scalable web applications.
+              </p>
+              <div class="tech-chips">
+                <span>Laravel</span>
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>GitHub Actions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+            </div>
+            <div class="timeline-card glassmorphism-card">
+              <div class="timeline-header">
+                <span class="time-period" data-i18n="exp3_period">2024 - Present</span>
+                <span class="company-badge" data-i18n="exp3_inst">Open Source & Community</span>
+              </div>
+              <h3 class="role-title" data-i18n="exp3_role">Open to Collaboration</h3>
+              <p class="role-desc" data-i18n="exp3_desc">
+                Looking to collaborate on beginner-friendly web projects and contribute to documentation. Passionate
+                about building functional applications and growing as a developer through community contribution.
+              </p>
+              <div class="tech-chips">
+                <span>Web Dev</span>
+                <span>Documentation</span>
+                <span>GitHub</span>
+                <span>Open Source</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: INTERACTIVE CLI TERMINAL -->
+    <section id="terminal-section" class="section terminal-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle" data-i18n="cli_subtitle">05 // Interactive Console</span>
+          <h2 class="section-title" data-i18n="cli_title">Developer Terminal</h2>
+          <p class="section-desc" data-i18n="cli_desc">Type <code class="inline-code">help</code> to run diagnostics, view architecture
+            specs, or inspect contact channels.</p>
+        </div>
+
+        <div class="terminal-wrapper glassmorphism-card reveal">
+          <div class="terminal-titlebar">
+            <div class="terminal-buttons">
+              <span class="t-btn"></span>
+              <span class="t-btn"></span>
+              <span class="t-btn"></span>
+            </div>
+            <div class="terminal-title">alvenath@workspace:~ (bash)</div>
+            <div class="terminal-status"><span class="status-live-dot"></span> READY</div>
+          </div>
+
+          <div class="terminal-screen" id="terminalScreen">
+            <div class="terminal-welcome" id="terminalWelcome" data-i18n="cli_welcome">
+              Maxiemillian (alvenath) Interactive Shell v1.0.<br />
+              Type <span class="term-cmd-highlight">help</span> to list commands, <span
+                class="term-cmd-highlight">skills</span>, <span class="term-cmd-highlight">projects</span>, or <span
+                class="term-cmd-highlight">clear</span>.
+            </div>
+            <div id="terminalOutput"></div>
+            <div class="terminal-input-row">
+              <span class="terminal-prompt">alvenath@workspace:~$</span>
+              <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false"
+                placeholder="Type a command (e.g., 'help', 'skills', 'projects')..." data-i18n-placeholder="cli_placeholder" />
+            </div>
+          </div>
+
+          <div class="terminal-quick-chips">
+            <span data-i18n="cli_cmds_label">Commands:</span>
+            <button class="quick-chip" data-cmd="help">help</button>
+            <button class="quick-chip" data-cmd="skills">skills</button>
+            <button class="quick-chip" data-cmd="projects">projects</button>
+            <button class="quick-chip" data-cmd="about">about</button>
+            <button class="quick-chip" data-cmd="contact">contact</button>
+            <button class="quick-chip" data-cmd="clear">clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: CONTACT -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle" data-i18n="contact_subtitle">06 // Get In Touch</span>
+          <h2 class="section-title" data-i18n="contact_title">Let's Build Something Together</h2>
+          <p class="section-desc" data-i18n="contact_desc">Have a web project idea, want to collaborate, or just want to say hi? I'd love to
+            connect!</p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-details reveal">
+            <div class="contact-card glassmorphism-card">
+              <h3 data-i18n="contact_channels">Direct Channels</h3>
+
+              <div class="contact-method">
+                <div class="method-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="method-info">
+                  <span class="method-label" data-i18n="contact_label_email">Email</span>
+                  <span class="method-val" id="emailText">maxiemillian911@gmail.com</span>
+                </div>
+                <button class="copy-btn" id="copyEmailBtn" title="Copy to clipboard">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="method-info">
+                  <span class="method-label" data-i18n="contact_label_location">Location</span>
+                  <span class="method-val" data-i18n="m_loc_val">Indonesia</span>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="method-info">
+                  <span class="method-label" data-i18n="contact_label_tz">Timezone</span>
+                  <span class="method-val" data-i18n="contact_val_tz">WIB (UTC+7)</span>
+                </div>
+              </div>
+
+              <div class="social-links-row">
+                <a href="https://github.com/alvenath" target="_blank" rel="noopener noreferrer" class="social-icon"
+                  aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                  aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon"
+                  aria-label="X / Twitter">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap reveal">
+            <form id="contactForm" class="contact-form glassmorphism-card">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="userName"><span data-i18n="form_name_label">Your Name</span> <span class="required">*</span></label>
+                  <input type="text" id="userName" name="name" required placeholder="Jane Doe" data-i18n-placeholder="form_name_ph" />
+                </div>
+                <div class="form-group">
+                  <label for="userEmail"><span data-i18n="form_email_label">Email Address</span> <span class="required">*</span></label>
+                  <input type="email" id="userEmail" name="email" required placeholder="jane@example.com" data-i18n-placeholder="form_email_ph" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="projectScope" data-i18n="form_subject_label">Subject / Topic</label>
+                <input type="text" id="projectScope" name="subject"
+                  placeholder="Architecture review, contract, full-time..." data-i18n-placeholder="form_subject_ph" />
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage"><span data-i18n="form_msg_label">Message</span> <span class="required">*</span></label>
+                <textarea id="userMessage" name="message" rows="5" required
+                  placeholder="Tell me about your project, timeline, and goals..." data-i18n-placeholder="form_msg_ph"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                <span id="btnText" data-i18n="form_send">Send Message</span>
+                <i class="fa-solid fa-paper-plane" id="btnIcon"></i>
+              </button>
+
+              <div class="form-status" id="formStatus"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <p>© <span id="year">2026</span> Maxiemillian. <span data-i18n="footer_text">Crafted with restraint and clarity.</span></p>
+        <p class="footer-sub" data-i18n="footer_tech">Pure HTML5, CSS3, & Modern Vanilla JS.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" aria-label="Back to Top">
+          <span data-i18n="back_to_top">Back to Top</span>
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT CASE STUDY MODAL -->
+  <div class="modal-overlay" id="projectModal" aria-hidden="true">
+    <div class="modal-container glassmorphism-card" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+
+</html>
